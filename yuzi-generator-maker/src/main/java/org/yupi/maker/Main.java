@@ -1,6 +1,6 @@
 package org.yupi.maker;
 
-import org.yupi.maker.cli.CommandExecutor;
+//import org.yupi.maker.cli.CommandExecutor;
 
 public class Main {
 
@@ -8,7 +8,7 @@ public class Main {
 
       //  args = new String[]{"generate", "-l", "-a", "-o"};
 
-        CommandExecutor commandExecutor = new CommandExecutor();
-        commandExecutor.doExecute(args);
+        //CommandExecutor commandExecutor = new CommandExecutor();
+        //commandExecutor.doExecute(args);
     }
 }

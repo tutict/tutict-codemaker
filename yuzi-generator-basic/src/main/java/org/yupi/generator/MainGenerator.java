@@ -6,18 +6,25 @@ import java.io.File;
 
 public class MainGenerator {
 
-
     public static void doGenerate(Object model) throws Exception {
-        String projectPath = System.getProperty("user.dir");
-        String inputPath = projectPath + File.separator + "yuzi-generator-basic/src/main/resources/templates";
-        String outputPath = projectPath;
 
+        String inputRootPath = "/home/tutict/work/yuzi-generator/yuzi-generator-demo-projects/acm-template-pro";
+        String outputRootPath = "/home/tutict/work/yuzi-generator";
+
+        String inputPath;
+        String outputPath;
+
+        inputPath = new File(inputRootPath, "src/com/yupi/acm/MainTemplate.java.ftl").getAbsolutePath();
+        outputPath = new File(outputRootPath, "src/com/yupi/acm/MainTemplate.java").getAbsolutePath();
+        DynamicGenerator.doGenerate(inputPath, outputPath, model);
+
+        inputPath = new File(inputRootPath, ".gitignore").getAbsolutePath();
+        outputPath = new File(outputRootPath, ".gitignore").getAbsolutePath();
         StaticGenerator.copyFilesByRecursive(inputPath, outputPath);
 
-        String inputDynamicFilePath = projectPath + File.separator + "yuzi-generator-basic/src/main/resources/templates/MainTemplate.java.ftl";
-        String outputDynamicFilePath = projectPath + File.separator + "yuzi-generator-demo-projects/acm-template/src/com.yupi.acm/MainTemplate.java";
-
-        DynamicGenerator.doGenerate(inputDynamicFilePath, outputDynamicFilePath, model);
+        inputPath = new File(inputRootPath, "README.md").getAbsolutePath();
+        outputPath = new File(outputRootPath, "README.md").getAbsolutePath();
+        StaticGenerator.copyFilesByRecursive(inputPath, outputPath);
 
     }
 

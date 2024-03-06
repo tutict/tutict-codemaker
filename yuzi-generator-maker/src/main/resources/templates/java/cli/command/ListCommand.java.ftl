@@ -1,4 +1,4 @@
-package org.yupi.maker.cli.command;
+package ${basePackage}.cli.command;
 
 import cn.hutool.core.io.FileUtil;
 import picocli.CommandLine;
@@ -10,7 +10,7 @@ import java.util.List;
 public class ListCommand implements Runnable {
 
     public void run() {
-       String inputPath = "${fileConfig.inputRootPath}";
+       String inputPath = ""${fileConfig.inputRootPath}";
        List<File> files = FileUtil.loopFiles(inputPath);
        for (File file : files) {
            System.out.println(file);
