@@ -70,5 +70,17 @@ public class MainGenerator {
         inputFilePath = inputResourcePath + File.separator + "templates/java/generator/StaticGenerator.java.ftl";
         outputFilePath = outputBaseJavaPackagePath + "/generator/StaticGenerator.java";
         DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        inputFilePath = inputResourcePath + File.separator + "templates/pom.xml.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "pom.xml";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        JarGenerator.doGenerator(outputPath);
+
+        String shellOutputFilePath = outputPath + File.separator + "generator";
+        String jarName = String.format("%s-%s-jar-with-dependencies-jar", meta.getName(), "1.0-SNAPSHOT");
+        String jarPath = "target/" + File.separator + jarName;
+        ScriptGenerator.doGenerator(shellOutputFilePath, jarPath);
+
     }
 }
